@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export default function Footer({totalCards}) {
+export default function Footer({numCardsRespondidos,totalCards}) {
   return (
     <StyledFooter>
-      <p>0/{totalCards} CONCLUÍDOS</p>
+      <p>{numCardsRespondidos}/{totalCards} CONCLUÍDOS</p>
     </StyledFooter>
   );
 }

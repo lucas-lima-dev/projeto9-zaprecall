@@ -2,16 +2,25 @@ import styled from "styled-components";
 import Footer from "./Footer";
 import Flashcards from "./Flashcards";
 import LogoNome from "./Logo&Nome";
-import {cards} from "./cards"
+import { cards } from "./cards";
+import { useState } from "react";
 
-const totalCards = cards.length
+const totalCards = cards.length;
 
 export default function ZapRecall() {
+  const [numCardsRespondidos, setNumCardsRespondidos] = useState(0);
+
   return (
     <ScreenContainer>
-      <LogoNome/>
-      <Flashcards />
-      <Footer totalCards={totalCards} />
+      <LogoNome />
+      <Flashcards
+        numCardsRespondidos={numCardsRespondidos}
+        setNumCardsRespondidos={setNumCardsRespondidos}
+      />
+      <Footer
+        numCardsRespondidos={numCardsRespondidos}
+        totalCards={totalCards}
+      />
     </ScreenContainer>
   );
 }
@@ -27,4 +36,3 @@ const ScreenContainer = styled.div`
   padding: 0px;
   padding-bottom: 200px;
 `;
-
