@@ -1,14 +1,17 @@
 import styled from "styled-components";
-import ContadorPerguntasConcluidas from "./ContadorPerguntasConcluidas";
+import Footer from "./Footer";
 import Flashcards from "./Flashcards";
 import LogoNome from "./Logo&Nome";
+import {cards} from "./cards"
+
+const totalCards = cards.length
 
 export default function ZapRecall() {
   return (
     <ScreenContainer>
       <LogoNome/>
       <Flashcards />
-      <ContadorPerguntasConcluidas />
+      <Footer totalCards={totalCards} />
     </ScreenContainer>
   );
 }

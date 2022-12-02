@@ -1,26 +1,23 @@
 import styled from "styled-components";
+import { cards } from "./cards";
+import ConteudoCards from "./ConteudoCards";
 
 export default function Flashcards() {
   return (
-    <ContainerBotoes>
-    Pergunta 1
-    </ContainerBotoes>
-)}
+    <StyledFlashCards>
+      {cards.map((cards, index) => (
+        <ConteudoCards key={index} numeroPergunta={index + 1} />
+      ))}
+    </StyledFlashCards>
+  );
+}
 
-const ContainerBotoes = styled.div`
-  width: 90px;
-  font-family: "Recursive";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
+const StyledFlashCards = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #ffffff;
-  background: blue;
-  border-radius: 5px;
-  border: 1px solid blue;
-  padding: 5px;
+  gap: 25px;
+  width: 80%;
+  margin: 20px;
 `;

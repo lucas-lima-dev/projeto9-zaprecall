@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-export default function ContadorPerguntasConcluidas() {
+export default function Footer({totalCards}) {
   return (
-    <Footer>
-      <p>0/4 CONCLUÍDOS</p>
-    </Footer>
+    <StyledFooter>
+      <p>0/{totalCards} CONCLUÍDOS</p>
+    </StyledFooter>
   );
 }
 
-const Footer = styled.div`
+const StyledFooter = styled.div`
   width: 100%;
   min-height: 50px;
   background-color: #ffffff;

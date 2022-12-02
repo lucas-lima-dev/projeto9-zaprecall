@@ -3,14 +3,14 @@ import logo from "../assets/img/logo.png";
 
 export default function LogoNome() {
   return (
-    <LogoContainer>
+    <StyledLogoContainer>
       <img src={logo} alt="" />
       <h1>ZapRecall</h1>
-    </LogoContainer>
+    </StyledLogoContainer>
   );
 }
 
-const LogoContainer = styled.div`
+const StyledLogoContainer = styled.div`
   display: flex;
   align-items: center;
   margin: 40px 0 20px 0;
