@@ -1,4 +1,4 @@
-.screen-container{
+/* .screen-container{
   background-color: #FB6B6B;
   width: 100vw;
   min-height: 100vh;
@@ -8,9 +8,9 @@
   margin: 0px;
   padding: 0px;
   padding-bottom: 200px;
-}
+} */
 
-.logo-container {
+/* .logo-container {
   display: flex;
   align-items: center;
   margin: 40px 0 20px 0;
@@ -29,9 +29,9 @@
   line-height: 45px;
   color: #FFFFFF;
   margin-left: 20px;
-}
+} */
 
-.footer-concluidos {
+/* .footer-concluidos {
   width: 100%;
   min-height: 50px;
   background-color: #FFFFFF;
@@ -46,7 +46,7 @@
   font-size: 18px;
   color: #333333;
   padding: 10px;
-}
+} */
 
 .footer-concluidos > .container-botoes {
   display: flex;
