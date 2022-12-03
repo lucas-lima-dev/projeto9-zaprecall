@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { cards } from "./cards";
 import ConteudoCards from "./ConteudoCards";
 
-export default function Flashcards({numCardsRespondidos,setNumCardsRespondidos}) {
+export default function Flashcards() {
   return (
     <StyledFlashCards>
-      {cards.map((cards, index) => (
+      {cards.map((card, index) => (
         <ConteudoCards 
         key={index} 
         numeroPergunta={index + 1} 
-        cards={cards}
+        card={card}
         />
       ))}
     </StyledFlashCards>

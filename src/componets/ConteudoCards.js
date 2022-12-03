@@ -12,16 +12,68 @@ const VERMELHO = "#FF3030";
 
 export default function ConteudoCards({
   numeroPergunta,
-  cards: { question, answer },
+  card: { question, answer },
 }) {
   const [textoCard, setTextoCard] = useState(`Pergunta ${numeroPergunta}`);
   const [estaAberto, setEstaAberto] = useState(false);
+  const [estaRespondida, setEstaRespondida] = useState(false);
+  const [estaFinalizada, setEstaFinalizada] = useState(false);
+  const [corEstado, setCorEstado] = useState("");
+  const [imagemCard, setImagemCard] = useState(setaPlay);
   const [dataTestImg, setDataTestImg] = useState("play-btn");
 
+  function clicarAbrirCarta(){
+    setEstaAberto(true)
+    setTextoCard(question)
+    setImagemCard(setaVirar)
+    setDataTestImg("turn-btn")
+  }
+
+  function verResposta() {
+    setEstaRespondida(true)
+    setTextoCard(answer)
+  }
+
+  function clicarCardImg() {
+    if(!estaAberto){
+      clicarAbrirCarta()
+    } else if(estaAberto){
+      verResposta()
+    }
+  }
+
+  function checarBotaoEscolhido(cor,imagem, dataTest) {
+    setEstaFinalizada(true)
+    setCorEstado(cor)
+    setImagemCard(imagem)
+    setTextoCard(`Pergunta ${numeroPergunta}`)
+    setDataTestImg(dataTest)
+  }
+
   return (
-    <StyledConteudoCards data-test="flashcard">
+    <StyledConteudoCards
+      data-test="flashcard"
+      estaAberto={estaAberto}
+      estaFinalizada={estaFinalizada}
+      corEstado={corEstado}
+    >
       <p data-test="flashcard-text">{textoCard}</p>
-      <img src={setaPlay} alt={setaPlay} data-test={dataTestImg} />
+      {(!estaRespondida || estaFinalizada) && <img onClick={clicarCardImg} src={imagemCard} alt={setaPlay} data-test={dataTestImg} />}
+      {(estaRespondida && !estaFinalizada) && 
+      <ContainerBotoes> 
+        <StyledBotoes onClick={()=> checarBotaoEscolhido(VERMELHO, iconeErro, "no-icon")} color={VERMELHO} data-teste="no-btn">
+          Não Lembrei
+        </StyledBotoes>
+
+        <StyledBotoes onClick={()=> checarBotaoEscolhido(AMARELO, iconeQuase, "partial-icon")} color={AMARELO} data-teste="partial-btn">
+          Quase não lembrei
+        </StyledBotoes>
+
+        <StyledBotoes onClick={()=> checarBotaoEscolhido(VERDE, iconeCerto, "zap-icon")} color={VERDE} data-teste="zap-btn">
+          Zap!
+        </StyledBotoes>
+      </ContainerBotoes>
+      }
     </StyledConteudoCards>
   );
 }
@@ -37,7 +89,7 @@ const StyleCartaFechada = `
   display: flex;
   align-items: center;
   justify-content: space-between;
-  cursor: pointer;
+  
 
 `;
 const StyleCartaAberta = `
@@ -63,20 +115,22 @@ const StyleCartaAberta = `
     position: absolute;
     bottom: 10px;
     right: 10px;
+    cursor: pointer;
   }
 
 `;
 
 const StyledConteudoCards = styled.div`
-  ${StyleCartaFechada}
+  ${props => props.estaAberto && !props.estaFinalizada ? StyleCartaAberta : StyleCartaFechada}
 
   & p {
     font-family: "Recursive";
+    text-decoration: ${props => props.estaFinalizada && "line-through"};
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    color: #333333;
+    color:${props => props.corEstado ? props.corEstado : "#333333"} ;
   }
 `;
 
@@ -86,11 +140,10 @@ const ContainerBotoes = styled.div`
   gap: 8px;
   align-items: center;
   justify-content: center;
-
-`
+`;
 const StyledBotoes = styled.button`
   width: 90px;
-  font-family: 'Recursive';
+  font-family: "Recursive";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -99,9 +152,9 @@ const StyledBotoes = styled.button`
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #FFFFFF;
-  background: blue;
+  color: #fff;
+  background-color:${props => props.color};
   border-radius: 5px;
-  
-  padding:5px;
-`
+  padding: 5px;
+  cursor: pointer;
+`;
