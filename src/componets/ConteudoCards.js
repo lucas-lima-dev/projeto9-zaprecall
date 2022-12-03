@@ -39,7 +39,7 @@ export default function ConteudoCards({
   function clicarCardImg() {
     if(!estaAberto){
       clicarAbrirCarta()
-    } else if(estaAberto){
+    } else if(estaAberto && !estaFinalizada){
       verResposta()
     }
   }
