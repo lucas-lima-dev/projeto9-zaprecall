@@ -13,6 +13,8 @@ const VERMELHO = "#FF3030";
 export default function ConteudoCards({
   numeroPergunta,
   card: { question, answer },
+  numCardsRespondidos,
+  setNumCardsRespondidos
 }) {
   const [textoCard, setTextoCard] = useState(`Pergunta ${numeroPergunta}`);
   const [estaAberto, setEstaAberto] = useState(false);
@@ -48,6 +50,7 @@ export default function ConteudoCards({
     setImagemCard(imagem)
     setTextoCard(`Pergunta ${numeroPergunta}`)
     setDataTestImg(dataTest)
+    setNumCardsRespondidos(numCardsRespondidos+1)
   }
 
   return (
