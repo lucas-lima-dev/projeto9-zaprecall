@@ -125,7 +125,7 @@ const StyleCartaAberta = `
 
 const StyledConteudoCards = styled.div`
   ${props => props.estaAberto && !props.estaFinalizada ? StyleCartaAberta : StyleCartaFechada}
-
+  
   & p {
     font-family: "Recursive";
     text-decoration: ${props => props.estaFinalizada && "line-through"};
@@ -134,6 +134,9 @@ const StyledConteudoCards = styled.div`
     font-size: 16px;
     line-height: 19px;
     color:${props => props.corEstado ? props.corEstado : "#333333"} ;
+  }
+  & img{
+    cursor: ${props=> !props.estaAberto ? "pointer" : ""};
   }
 `;
 
@@ -146,6 +149,7 @@ const ContainerBotoes = styled.div`
 `;
 const StyledBotoes = styled.button`
   width: 90px;
+  height: 40px;
   font-family: "Recursive";
   font-style: normal;
   font-weight: 400;
@@ -159,5 +163,6 @@ const StyledBotoes = styled.button`
   background-color:${props => props.color};
   border-radius: 5px;
   padding: 5px;
+  border: none;
   cursor: pointer;
 `;

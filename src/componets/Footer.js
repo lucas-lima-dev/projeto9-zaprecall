@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export default function Footer({numCardsRespondidos,totalCards}) {
   return (
-    <StyledFooter>
+    <StyledFooter data-test='footer'>
       <p>{numCardsRespondidos}/{totalCards} CONCLUÍDOS</p>
     </StyledFooter>
   );
