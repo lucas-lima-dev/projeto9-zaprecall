@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Footer from "./Footer";
-import Flashcards from "./Flashcards";
+import Flashcards from "./flashcards";
 import LogoNome from "./Logo&Nome";
 import { cards } from "./cards";
 import { useState } from "react";
