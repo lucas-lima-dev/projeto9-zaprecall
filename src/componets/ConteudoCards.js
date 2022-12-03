@@ -64,15 +64,15 @@ export default function ConteudoCards({
       {(!estaRespondida || estaFinalizada) && <img onClick={clicarCardImg} src={imagemCard} alt={setaPlay} data-test={dataTestImg} />}
       {(estaRespondida && !estaFinalizada) && 
       <ContainerBotoes> 
-        <StyledBotoes onClick={()=> checarBotaoEscolhido(VERMELHO, iconeErro, "no-icon")} color={VERMELHO} data-teste="no-btn">
+        <StyledBotoes onClick={()=> checarBotaoEscolhido(VERMELHO, iconeErro, "no-icon")} color={VERMELHO} data-test="no-btn">
           Não Lembrei
         </StyledBotoes>
 
-        <StyledBotoes onClick={()=> checarBotaoEscolhido(AMARELO, iconeQuase, "partial-icon")} color={AMARELO} data-teste="partial-btn">
+        <StyledBotoes onClick={()=> checarBotaoEscolhido(AMARELO, iconeQuase, "partial-icon")} color={AMARELO} data-test="partial-btn">
           Quase não lembrei
         </StyledBotoes>
 
-        <StyledBotoes onClick={()=> checarBotaoEscolhido(VERDE, iconeCerto, "zap-icon")} color={VERDE} data-teste="zap-btn">
+        <StyledBotoes onClick={()=> checarBotaoEscolhido(VERDE, iconeCerto, "zap-icon")} color={VERDE} data-test="zap-btn">
           Zap!
         </StyledBotoes>
       </ContainerBotoes>
